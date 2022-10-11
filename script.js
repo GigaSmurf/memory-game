@@ -6,9 +6,10 @@ let tiles = []
 let end = false;
 let clicked = null;
 let clickable = true;
+let TRANSITION_TIME = 700;
+// let attemptsText = document.getElementByID("#attempts");
 
 // Constants
-// CHALLENGE: Randomly generate the colors!
 let COLORS = ["#f57d7d", "#f57d7d", "#f5b97d", "#f5b97d", "#fcfc77", "#fcfc77", "#7bfc77", "#7bfc77", "#779ffc",
 "#779ffc", "#a177fc", "#a177fc", "#e877fc", "#e877fc", "#fc77d6", "#fc77d6"]
 
@@ -16,17 +17,17 @@ function load_tiles() {
     for(let i = 0; i < numTiles; ++i) {
         // Create object to store jQuery element, boolean to track if matched, and color
         let tileObject = {};
+        //gets the id of the the tiles
         tileObject.tile = $("#" + i)
         tileObject.tile.css("background", TILE_COLOR)
         tileObject.matched = false;
         tiles.push(tileObject)
     }
     
-    // CHALLENGE: Make it randomly assigned!
     // Assign colors to tiles
     let tileAssignment = [6,11,3,2,15,7,0,8,5,12,10,1,9,13,14,4]
     for(let i = 0; i < tileAssignment.length; ++i) {
-        tiles[tileAssignment[i]].color = COLORS[i]
+        tiles[tileAssignment[i]].color = "#"+(Math.random()*0xFFFFFF<<0).toString(16);
     }
 
     for(let i = 0; i < tiles.length; ++i) {
@@ -115,4 +116,4 @@ function checkEnd() {
 
 // Inital setup; load tiles and setup number of attempts shown to user
 load_tiles()
-attemptsText.text(numAttempts)
+attemptsText.text(numAttempts);

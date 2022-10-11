@@ -8,7 +8,7 @@ body {
     background: rgb(58,57,54);
 }
 
-h1, p {
+h1, p, span{
     text-align: center;
     text-transform: uppercase;
     color: white;
